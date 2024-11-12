@@ -15,7 +15,13 @@ class Vehicle {
   }
 
   applyBehaviors(target) {
+    // Met à jour maxSpeed et maxForce à partir des sliders
+    this.maxSpeed = maxSpeedSlider.value();
+    this.maxForce = maxForceSlider.value();
+
+    // Appliquer la force seek
     let force = this.seek(target);
+    //let force = this.flee(target);
     this.applyForce(force);
   }
   // seek est une méthode qui permet de faire se rapprocher le véhicule de la cible passée en paramètre
@@ -60,6 +66,8 @@ class Vehicle {
 
     // on remet l'accélération à zéro
     this.acc.set(0, 0);
+    // Pour que le véhicule ré-apparaise
+    this.edges();
   }
 
   // On dessine le véhicule
